@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nonu's Love Quest</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:linear-gradient(to bottom right,#ff7aa2,#ff2f68);
+font-family:Poppins;
+text-align:center;
+color:white;
+overflow:hidden;
+}
+
+.screen{
+display:none;
+min-height:100vh;
+padding:40px;
+}
+
+.active{
+display:block;
+}
+
+h1{
+font-size:40px;
+}
+
+p{
+font-size:20px;
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:30px;
+background:#ff4f7b;
+color:white;
+font-size:18px;
+cursor:pointer;
+margin:10px;
+transition:0.2s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#ff1f5c;
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:20px;
+color:#ff4d6d;
+animation:float 6s linear infinite;
+opacity:0.7;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
+/* LETTER PAGE */
+
+#letter{
+background:url("letterbg.jpg");
+background-size:cover;
+background-position:center;
+color:#3b1f1f;
+font-family:'Great Vibes', cursive;
+}
+
+.letter-box{
+background:rgba(255,255,255,0.88);
+padding:40px;
+border-radius:15px;
+max-width:750px;
+margin:auto;
+}
+
+.letter-box p{
+font-size:26px;
+line-height:1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+<script>
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*25)+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+<!-- START -->
+
+<div class="screen active" id="start">
+<h1>💖 Happy Valentine’s, Maya ke papa 💖</h1>
+<p>Only true Nonu can unlock the final letter</p>
+<button onclick="go('q1')">Start</button>
+</div>
+
+<!-- QUESTIONS -->
+
+<div class="screen" id="q1">
+<p>What do I call you the most?</p>
+<button onclick="go('q2')">Nonu</button>
+<button onclick="wrong()">Babe</button>
+<button onclick="wrong()">Bro</button>
+</div>
+
+<div class="screen" id="q2">
+<p>My favourite colour?</p>
+<button onclick="go('q3')">White</button>
+<button onclick="wrong()">Black</button>
+<button onclick="wrong()">Red</button>
+</div>
+
+<div class="screen" id="q3">
+<p>My love language?</p>
+<button onclick="go('q4')">Acts of service & Gifts</button>
+<button onclick="wrong()">Words only</button>
+<button onclick="wrong()">Touch</button>
+</div>
+
+<div class="screen" id="q4">
+<p>Who fell first?</p>
+<button onclick="go('q5')">Me</button>
+<button onclick="wrong()">You</button>
+<button onclick="wrong()">Both same day</button>
+</div>
+
+<div class="screen" id="q5">
+<p>My favourite thing about you?</p>
+<button onclick="go('q6')">Everything</button>
+<button onclick="wrong()">Hair</button>
+<button onclick="wrong()">Voice</button>
+</div>
+
+<div class="screen" id="q6">
+<p>What animal do I compare you to?</p>
+<button onclick="go('q7')">Goldfish</button>
+<button onclick="wrong()">Cat</button>
+<button onclick="wrong()">Dog</button>
+</div>
+
+<div class="screen" id="q7">
+<p>What do I love more?</p>
+<button onclick="go('q8')">You</button>
+<button onclick="wrong()">Sleep</button>
+<button onclick="wrong()">Food</button>
+</div>
+
+<div class="screen" id="q8">
+<p>Who is my safe place?</p>
+<button onclick="go('q9')">You</button>
+<button onclick="wrong()">Friends</button>
+<button onclick="wrong()">My phone</button>
+</div>
+
+<div class="screen" id="q9">
+<p>Our first kiss' location?</p>
+<button onclick="go('q10')">School</button>
+<button onclick="wrong()">Park</button>
+<button onclick="wrong()">Mall</button>
+</div>
+
+<div class="screen" id="q10">
+<p>If you forget everything, what must you remember?</p>
+<button onclick="openLetter()">You love me</button>
+<button onclick="wrong()">Password</button>
+<button onclick="wrong()">Your name</button>
+</div>
+
+<!-- LETTER -->
+
+<div class="screen" id="letter">
+<div class="letter-box">
+
+<p>You’re my favorite kind of magic — the quiet kind that settles into my soul and makes everything feel softer, warmer, and more alive.</p>
+
+<p>With you, even ordinary moments turn golden, and I find pieces of home in your smile, your voice, your presence.</p>
+
+<p>You’re not just my boyfriend, you’re my best friend — the person I laugh with until my stomach hurts, the one who understands my silence, and the one who knows me better than I know myself sometimes.</p>
+
+<p>I adore your humor, the way you make me smile without even trying, and how we’re so beautifully similar yet still perfectly balanced.</p>
+
+<p>You make me feel seen, loved, and safe in ways I never knew were possible.</p>
+
+<p>Loving you feels effortless, like breathing, like something my heart was always meant to do.</p>
+
+<p>You’re my comfort, my happiness, my greatest blessing, and the most beautiful chapter of my life.</p>
+
+<p>Forever yours, ❤️</p>
+
+</div>
+</div>
+
+<!-- SCRIPT -->
+
+<script>
+
+function go(id){
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+function wrong(){
+alert("Wrong answer Nonu 😤 Try again!");
+}
+
+function openLetter(){
+go("letter");
+}
+
+</script>
+
+</body>
+</html>
